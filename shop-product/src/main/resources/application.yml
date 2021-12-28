@@ -1,6 +1,12 @@
 server:
   port: 8081
 spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    discoveryClientEnabled: false
+  sleuth:
+    sampler:
+      probability: 1.0  #采样百分比 0-1
   application:
     name: service-product
   datasource:

@@ -5,6 +5,7 @@ import com.jxl.dcain.Order;
 import com.jxl.dcain.Product;
 import jxl.service.OrderService;
 import jxl.service.ProductService;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -28,6 +29,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
     //下单feign负载均衡
     @RequestMapping("/order/prod/{pid}")
     public Order order(@PathVariable("pid") Integer pid){
@@ -56,7 +59,8 @@ public class OrderController {
         orderService.createOrder(order);
 
         System.out.println("新增订单成功啦"+JSON.toJSONString(order));
-
+        //向mq发消息
+        rocketMQTemplate.convertAndSend("order-topic",order);
         return order;
 
     }
