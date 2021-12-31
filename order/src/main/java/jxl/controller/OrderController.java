@@ -23,7 +23,7 @@ import java.util.Random;
  * @author jiangxinlin
  * @create 2021-12-22-18:32
  */
-@RestController
+//@RestController
 public class OrderController {
     @Autowired
     private OrderService orderService;

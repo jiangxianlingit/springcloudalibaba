@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -44,10 +45,19 @@ public class ProductController {
 
     //新增一笔定单，先查询商品，在根据信息新增
     @RequestMapping("/product/{pid}")
-    public Product product(@PathVariable("pid") Integer pid){
+    public Product product(@PathVariable    ("pid") Integer pid){
         System.out.println("查询订单信息");
         Product product = productService.findByid(pid);
         System.out.println("查询成功"+ JSON.toJSONString(product));
         return product;
     }
+
+//    扣减库存
+
+@RequestMapping("/product/reduceInventory")
+public void reduceInventory(Integer pid, Integer number){
+    productService.reduceInventory(pid,number);
+}
+
+
 }

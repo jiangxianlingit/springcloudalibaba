@@ -19,4 +19,11 @@ public class ProductServiceImp implements ProductService{
     public Product findByid(Integer pid) {
         return productDao.findById(pid).get();
     }
+    //扣减库存
+    @Override
+    public void reduceInventory(Integer pid, Integer number) {
+        Product product=   productDao.findById(pid).get();
+        product.setStock(product.getStock()-number);
+        productDao.save(product);
+    }
 }

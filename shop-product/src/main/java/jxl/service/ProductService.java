@@ -11,4 +11,7 @@ import com.jxl.dcain.Product;
 
 public interface ProductService  {
     Product findByid(Integer pid);
+
+    //    扣减库存
+    void reduceInventory(Integer pid, Integer number);
 }

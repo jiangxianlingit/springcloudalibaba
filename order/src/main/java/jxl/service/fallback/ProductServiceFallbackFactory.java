@@ -1,3 +1,4 @@
+/*
 package jxl.service.fallback;
 
 import com.jxl.dcain.Product;
@@ -5,12 +6,14 @@ import feign.hystrix.FallbackFactory;
 import jxl.service.ProductService;
 import org.springframework.stereotype.Service;
 
+*/
 /**
  * 容错类，实现容错
  *
  * @author jiangxinlin
  * @create 2021-12-23-17:24
- */
+ *//*
+
 @Service
 public class ProductServiceFallbackFactory implements FallbackFactory<ProductService> {
 //Throwable在feign调用时产生的异常
@@ -29,3 +32,4 @@ public class ProductServiceFallbackFactory implements FallbackFactory<ProductSer
 
     }
 }
+*/
