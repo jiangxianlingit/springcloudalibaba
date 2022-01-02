@@ -1,0 +1,26 @@
+seata:
+  # 开启自动装配
+  enabled: true
+  # 本客户端的微服务名称
+  application-id: service-order
+  # 例如此时会读取 SEATA_GROUP 这个分组下的 service.vgroupMapping.my_test_tx_group 这个属性的值。
+  # 从上面的配置可以知道笔者此处的最终值为 testCluster。后面程序运行会找到 testCluster 这个集群的seata服务端，进行通讯。
+  tx-service-group: service-order
+  config:
+    type: nacos
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 127.0.0.1:8848
+      # 读取的配置分组
+      group: SEATA_GROUP
+  # 注册中心设置
+  registry:
+    type: nacos
+    nacos:
+      # SEATA服务中心的微服务名，此处与服务端保持一致
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+
