@@ -5,12 +5,12 @@ spring:
     nacos:
       config:
         server-addr: 127.0.0.1:8848
-#        namespace: public
-#        group: SEATA_GROUP
-        file-extension: yml
-#    alibaba:
-#      seata:
-#        tx-service-group: service-product
+        namespace: public
+        group: SEATA_GROUP
+#        file-extension: yml
+    alibaba:
+      seata:
+        tx-service-group: service-product
 #  profiles:
 #    active: dev
 

@@ -23,7 +23,7 @@ public class OrderServiceImp5{
     private ProductService productService;
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
-//    @GlobalTransactional
+    @GlobalTransactional
     public Order createOrder(Integer pid) {
         System.out.println("下单了");
         //调用商品微服务查询商品信息
@@ -41,8 +41,7 @@ public class OrderServiceImp5{
         order.setNumber(1);
 
         orderDao.save(order);
-//        int num = 1/0;
-//        System.out.println(num);
+        int num = 1/0;
 
         System.out.println("新增订单成功啦"+JSON.toJSONString(order));
         //扣库存

@@ -4,6 +4,7 @@ import com.alibaba.druid.proxy.jdbc.DataSourceProxyConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -14,7 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @create 2021-12-22-18:14
  */
 @EntityScan(basePackages = "com.jxl.dcain")
-@SpringBootApplication
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 @EnableDiscoveryClient
 @EnableFeignClients  //开启feign的客户端
 public class OrderApplication {
